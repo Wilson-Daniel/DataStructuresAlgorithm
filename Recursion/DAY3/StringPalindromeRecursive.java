@@ -1,4 +1,4 @@
-package Recursion.DAY3;
+package DataStructuresAlgorithm.Recursion.DAY3;
 
 public class StringPalindromeRecursive {
     public static void main(String[] args) {
