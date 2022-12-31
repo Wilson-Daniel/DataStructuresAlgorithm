@@ -16,7 +16,16 @@ public class FREQUE_ARRAY_Check_If_No_Is_Present_Or_Not {
         int[] freq = makeFreqArray(arr);
         Scanner sc = new Scanner(System.in);
         int q = sc.nextInt();
-        
+        while(q>0){
+            System.out.println("Enter a No: ");
+            int x = sc.nextInt();
+            if(freq[x]>0){
+                System.out.println("Yes");
+            }else{
+                System.out.println("No");
+            }
+            q--;
+        }
     }
 
 }
