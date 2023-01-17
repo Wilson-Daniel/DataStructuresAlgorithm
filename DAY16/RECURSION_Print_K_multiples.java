@@ -9,7 +9,7 @@ public class RECURSION_Print_K_multiples {
             return;
         }
         printK(n,k-1);
-        System.out.print(n*k+" ";
+        System.out.print(n*k+" ");
 
     }
 }
