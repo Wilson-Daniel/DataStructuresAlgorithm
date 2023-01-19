@@ -1,6 +1,6 @@
 package DataStructuresAlgorithm.DAY18.RECURSION_ASSIGNMENT;
 
-public class RECURSION_ASSIGNMENT_Q2 {
+public class Q2 {
     //- Given two number x and y find product using recursion.
     public static void main(String[] args) {
         System.out.println(calcPower(3,3));
