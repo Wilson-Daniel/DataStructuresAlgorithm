@@ -1,6 +1,5 @@
-package DataStructuresAlgorithm.DAY20;
+package DataStructuresAlgorithm.DAY19;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class RECURSION_Return_all_indexes {

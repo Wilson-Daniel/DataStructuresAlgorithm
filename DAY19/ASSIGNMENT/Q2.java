@@ -1,6 +1,7 @@
-package DataStructuresAlgorithm.DAY20.ASSIGNMENT;
+package DataStructuresAlgorithm.DAY19.ASSIGNMENT;
 
-import java.util.ArrayList;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class Q2 {
     /*
@@ -20,17 +21,21 @@ public class Q2 {
     public static void main(String[] args) {
         int n = 5;
         int[] arr = {1, 2, 3, 4, 5};
-        System.out.println(triangle(arr,n-1));
+        triangle(arr);
     }
-    public static int[] triangle(int[] arr,int idx){
-        int[] ans = new int[idx];
+    public static void triangle(int[] arr){
+
         //Base Case
-        if(idx == 0){
-            return ans;
+        if(arr.length ==0){
+            return ;
         }
-        triangle(ans,idx-1);
-        ans[idx-1] = arr[idx]+arr[idx-1];
-        return ans;
+        int[] ans = new int[arr.length-1];
+        for(int i=0 ; i<arr.length-1 ; i++){
+            ans[i] = arr[i] + arr[i+1];
+        }
+
+        triangle(ans);
+        System.out.println(Arrays.toString(arr));
 
     }
 }

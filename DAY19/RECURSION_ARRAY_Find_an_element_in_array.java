@@ -1,6 +1,4 @@
-package DataStructuresAlgorithm.DAY20;
-
-import javax.sound.sampled.Line;
+package DataStructuresAlgorithm.DAY19;
 
 public class RECURSION_ARRAY_Find_an_element_in_array {
     //Given an array find an element x using recursion
