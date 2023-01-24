@@ -11,7 +11,6 @@ public class RECURSION_STRING_Reverse_string {
             return "";
         }
         String smallAns = reverseStr(s.substring(1));
-
         return smallAns+s.charAt(0);
     }
 }
