@@ -5,7 +5,7 @@ public class BubbleSortAlgorithm {
         int n = arr.length;
         for(int i=0 ; i<n-1 ; i++){
             // n-1 iterations
-            boolean flag = false; //has any swap happened, optimizing the code for nearly sorted array 
+            boolean flag = false; //has any swap happened, optimizing the code for nearly sorted array
             for(int j=0 ; j<n-i-1 ; j++){
                 /*
                 last i element are already at correct sorted position,
