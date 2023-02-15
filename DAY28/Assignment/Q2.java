@@ -1,6 +1,4 @@
-package DataStructuresAlgorithm.DAY30.Assignment;
-
-import java.util.ArrayList;
+package DataStructuresAlgorithm.DAY28.Assignment;
 
 public class Q2 {
     /*

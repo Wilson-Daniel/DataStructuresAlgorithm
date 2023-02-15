@@ -1,4 +1,4 @@
-package DataStructuresAlgorithm.DAY30.Assignment;
+package DataStructuresAlgorithm.DAY28.Assignment;
 
 public class Q6 {
 //    for(int i=0 ; i<n ; i++){

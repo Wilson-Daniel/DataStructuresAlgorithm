@@ -1,4 +1,4 @@
-package DataStructuresAlgorithm.DAY30;
+package DataStructuresAlgorithm.DAY28;
 
 public class BringAllZerosToEnd {
     public static void main(String[] args) {

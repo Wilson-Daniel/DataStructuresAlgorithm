@@ -1,6 +1,5 @@
-package DataStructuresAlgorithm.DAY30.Assignment;
+package DataStructuresAlgorithm.DAY28.Assignment;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Q5 {
