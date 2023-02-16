@@ -1,51 +1,50 @@
 package DataStructuresAlgorithm.DAY29;
 
 public class MergeSort {
-    public static void mergeSort(int[] arr,int l,int r){
-        if(l>=r){
-            return;
+    static void displayArr(int[] arr){
+        for(int val : arr){
+            System.out.print(val + " ");
         }
-        int mid = (l+r)/2;
-        mergeSort(arr,l,mid);
-        mergeSort(arr,mid+1,r);
-        merge(arr,l,mid,r);
     }
-    public static void merge(int[] arr,int l,int mid, int r){
+    static void merge(int[] arr, int l, int mid, int r){
         int n1 = mid-l+1;
         int n2 = r-mid;
         int[] left = new int[n1];
         int[] right = new int[n2];
-        int i,j,k=0;
-        for(i=0 ; i<n1 ; i++){
-            left[i] = arr[l+i];
-        }
-        for(j=0 ;  j<n2 ; j++){
-            right[j] = arr[mid+1+j];
-        }
-        i=0;
-        j=0;
-        k=l;
-        while(i<n1 && j<n2){
-            if(left[i]<right[j]){
+        int i, j, k;
+        for(i = 0; i < n1; i++) left[i] = arr[l+i];
+        for(j = 0; j < n2; j++) right[j] = arr[mid+1+j];
+        i = 0;
+        j = 0;
+        k = l;
+        while(i < n1 && j < n2){
+            if(left[i] < right[j])
                 arr[k++] = left[i++];
-            }else {
+            else
                 arr[k++] = right[j++];
-            }
         }
-        while(i<n1){
+        while(i < n1)
             arr[k++] = left[i++];
-        }
-        while(j<n2){
+        while (j < n2)
             arr[k++] = right[j++];
-        }
+    }
+    static void mergeSort(int[] arr, int l, int r){
+        if(l >= r) return;
+        int mid = (l+r)/2;
+        mergeSort(arr, l, mid);
+        mergeSort(arr, mid+1, r);
+        merge(arr, l, mid, r);
     }
 
     public static void main(String[] args) {
-        int[] arr = {1,5,3,4,2};
-        mergeSort(arr,0,5);
-        for(int i=0 ; i<arr.length ; i++){
-            System.out.print(i+" ");
-        }
-
+        int[] arr = {4, 1, 3, 5, 2};
+        int n = arr.length;
+        System.out.println("Array before sorting");
+        displayArr(arr); // 4 1 3 5 2
+        mergeSort(arr, 0, n-1);
+        System.out.println();
+        System.out.println("Array after sorting");
+        displayArr(arr); // 1 2 3 4 5
     }
 }
+
