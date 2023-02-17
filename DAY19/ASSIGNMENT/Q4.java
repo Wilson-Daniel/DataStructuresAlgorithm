@@ -1,5 +1,6 @@
 package DataStructuresAlgorithm.DAY19.ASSIGNMENT;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Q4 {
@@ -30,6 +31,7 @@ public class Q4 {
         if(idx2 == arr2.length-1 || idx == arr.length-1){
             return;
         }
+        ArrayList<Integer> ans = new ArrayList<>();
         if(arr[idx] > arr2[idx2] && arr2[idx2]>arr[idx-1]){
             System.out.println(arr[idx]+" "+arr2[idx2]+" "+arr[idx-1]);
             generateArr(arr,arr2,idx,idx2+1);
