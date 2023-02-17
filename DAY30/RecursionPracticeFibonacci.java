@@ -10,7 +10,6 @@ public class RecursionPracticeFibonacci {
         int pre = fibo(n-1);
         int pre2 = fibo(n-2);
         int ans = pre+pre2;
-        int 
         System.out.print(ans+" ");
         return ans;
 
