@@ -34,24 +34,17 @@ public class COUNT_SORT {
                 max = arr[i];
             }
         }
-        System.out.println(max);
         int[] count = new int[max+1];
         for (int i=0 ; i<n ; i++){
             count[arr[i]]++;
         }
-        for(int i:count){
-            System.out.print(i+" ");
-        }
-        System.out.println();
+
             ///making prefix sum in count only
         for(int i=1 ; i<count.length ; i++){
             count[i]+= count[i-1];
         }
         int[] output = new int[n];
-        for(int i:count){
-            System.out.print(i+" ");
-        }
-        System.out.println();
+
         // find the index of each element from arr and put it in index array
         for(int i=n-1 ; i>=0 ; i--){
             int arrval = arr[i];
