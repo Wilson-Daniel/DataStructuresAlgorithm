@@ -13,9 +13,8 @@ public class Radix_Sort {
     public static void countSort(int[] arr,int place){
         int n = arr.length;
         int max = findMax(arr);
-
         //making count array
-        int[] count = new int[max+1];
+        int[] count = new int[10];
         for (int i=0 ; i<n ; i++){
             int idx = (arr[i]/place)%10;
             count[idx]++; //arr[105] -> freq[5]++  when place=1 , freq[0] when place=10 , freq[1] when place=100
