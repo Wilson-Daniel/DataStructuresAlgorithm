@@ -14,7 +14,7 @@ public class SortingQuestion3 {
     }
     public static void sort012(int[] a){
         int l = 0, mid =0, h = a.length-1;
-        
+
         //exploring the unknown region
         while(l<=h){
             if(a[mid] == 0){
