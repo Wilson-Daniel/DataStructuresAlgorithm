@@ -17,24 +17,25 @@ public class BinarySearch {
         }
         return false;
     }
-    public static boolean recursibeBinary(int[] arr,int target,int st,int end){
+    public static boolean recursiveBinary(int[] arr,int target,int st,int end){
         if(st>end) return false; // base case
 
         int mid = (st+end)/2;
         if(target == arr[mid]){
             return true;
         }else if(target < arr[mid]){
-            return recursibeBinary(arr,target,st,mid-1);
-        }else{
-            return recursibeBinary(arr,target,mid+1,end);
+            return recursiveBinary(arr,target,st,mid-1);
+        }else {
+            return recursiveBinary(arr, target, mid + 1, end);
         }
 
     }
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5};
+        int[] arr = {1,2,3,4,0,5};
         int target = 0;
+
         while(target != 10){
-            System.out.printf("%d exists in arr: %b \n", target, recursibeBinary(arr,target,0,arr.length-1));
+            System.out.printf("%d exists in arr: %b \n", target, recursiveBinary(arr,target,0,arr.length-1));
             target++;
         }
     }
