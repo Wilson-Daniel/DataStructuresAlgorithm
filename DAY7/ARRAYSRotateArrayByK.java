@@ -3,7 +3,7 @@ package DataStructuresAlgorithm.DAY7;
 public class ARRAYSRotateArrayByK {
     public static void main(String[] args) {
         int[] arr = {1,2,3,4,5,6,7};
-        int[] ans = reverseArray(arr,5);
+        int[] ans = reverseArray(arr,2);
         printArrays(ans);
     }
     public static int[] reverseArray(int[] arr,int k){
