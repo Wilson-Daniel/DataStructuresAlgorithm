@@ -18,12 +18,12 @@ public class BACKTRACKING_NQueenProblem {
     private boolean nQueen(int[][] board, int row) {
         if(row >= N) return true;
         for(int col=0 ; col<N ; col++){
-            if(isSafe(board,col,row)){
-                board[col][row] = 1;
+            if(isSafe(board,row,col)){
+                board[row][col] = 1;
                 if(nQueen(board,row+1)==true){
                     return true;
                 }
-                board[col][row] = 0;
+                board[row][col] = 0;
             }
         }
         return false;
@@ -59,6 +59,7 @@ public class BACKTRACKING_NQueenProblem {
             System.out.println();
         }
     }
+
 
     public static void main(String[] args) {
         BACKTRACKING_NQueenProblem nqueen = new BACKTRACKING_NQueenProblem();
