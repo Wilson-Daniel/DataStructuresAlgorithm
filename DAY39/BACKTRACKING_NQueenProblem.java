@@ -23,7 +23,7 @@ public class BACKTRACKING_NQueenProblem {
                 if(nQueen(board,row+1)==true){
                     return true;
                 }
-                
+
                 board[row][col] = 0;
             }
         }
