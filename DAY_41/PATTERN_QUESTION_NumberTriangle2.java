@@ -17,10 +17,9 @@ public class PATTERN_QUESTION_NumberTriangle2 {
             for(int j=num ;j>=1 ; j--){
                 System.out.print(j+" ");
             }
-            for(int j=1 ;j<=num ; j++){
-                if(j>1){
-                    System.out.print(j+" ");
-                }
+            for(int j=2 ;j<=num ; j++){
+                System.out.print(j+" ");
+
             }
             num++;
             System.out.println();
