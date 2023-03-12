@@ -6,6 +6,7 @@ public class ARRAYSRotateArrayByK {
         int[] ans = reverseArray(arr,2);
         printArrays(ans);
     }
+
     public static int[] reverseArray(int[] arr,int k){
         int n= arr.length;
         k = k%n;
@@ -19,6 +20,7 @@ public class ARRAYSRotateArrayByK {
         }
         return ans;
     }
+
     public static void printArrays(int[] arr){
         for(int i=0 ; i<arr.length ; i++){
             System.out.print(arr[i]+" ");
