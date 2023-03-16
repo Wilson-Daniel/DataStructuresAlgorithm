@@ -2,12 +2,17 @@ package DataStructuresAlgorithm.DAY_45;
 
 public class LinkedListLL {
     Node head;
+    private int size;
+    LinkedListLL(){
+        this.size = 0;
+    }
     class Node{
         String data;
         Node next;
         Node(String data){
             this.data=data;
             this.next = null;
+            size++;
         }
     }
     //add - First, Last
@@ -53,8 +58,51 @@ public class LinkedListLL {
         list.addFirst("a");
         list.addFirst("is");
         list.addLast("list");
-        list.addLast("list");
         list.addFirst("ll");
         list.printList();
+
+        list.delFirst();
+        list.printList();
+
+        list.delLast();
+        list.printList();
+
+        System.out.println(list.getSize());
+        list.addLast("list");
+        System.out.println(list.getSize());
+
+    }
+
+    //deleting a node
+    //deleteFirst
+    public void delFirst(){
+        if(head == null){
+            System.out.println("List is empty");
+            return;
+        }
+        size--;
+        head = head.next;
+    }
+    public void delLast(){
+        if(head == null){
+            System.out.println("List is empty");
+            return;
+        }
+        size--;
+        if(head.next == null){ //        <-|    corner case handle
+            head = null;               //  |
+            return;                    //  |
+        }                              //  |
+        Node secondLast = head;        //  |
+        Node lastNode = head.next; //head.next = null -> lastNode = Null;
+        while(lastNode.next != null ){ //null.next !!error!!
+            lastNode = lastNode.next;
+            secondLast = secondLast.next;
+        }
+        secondLast.next = null;
+    }
+
+    public int getSize(){
+        return size;
     }
 }
