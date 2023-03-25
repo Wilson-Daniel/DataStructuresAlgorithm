@@ -14,7 +14,7 @@ public class LinkedList {
             this.next = null;
         }
     }
-
+    //adding at first place
     public void addFirst(int data){
         //STEP-1
         Node newNode = new Node(data);
@@ -29,6 +29,7 @@ public class LinkedList {
         //STEP-3
         head = newNode;
     }
+    //adding at the last
     public void addLast(int data){
         Node newNode = new Node(data);
         size++;
@@ -39,7 +40,7 @@ public class LinkedList {
         tail.next = newNode;
         tail = newNode;
     }
-
+    //Adding in middle of list
     public void add(int data,int idx){
         if(idx == 0){
             addFirst(data);
@@ -56,7 +57,7 @@ public class LinkedList {
         neNode.next = temp.next;
         temp.next = neNode;
     }
-
+    //Printing a List
     public void printList(){
         if(head == null){
             System.out.println("LL is empty");
@@ -70,6 +71,7 @@ public class LinkedList {
         System.out.print("Null");
         System.out.println();
     }
+
     public static void main(String[] args){
         LinkedList ll = new LinkedList();
         LinkedList l1 = new LinkedList();
@@ -80,11 +82,68 @@ public class LinkedList {
         ll.add(5,3);
         ll.printList();
         System.out.println(ll.size);
-
-        l1.printList();
-
-
+        ll.removeFirst();
+        ll.printList();
+        ll.removeLast();
+        ll.printList();
+        System.out.println(ll.searchIter(34));
     }
+
+    public int removeFirst(){
+        if(head == null){
+            System.out.println("List is Empty");
+            return Integer.MAX_VALUE;
+        }else if(size == 1){
+            int val = head.data;
+            head = tail = null;
+            size =0;
+            return val;
+        }
+        int val = head.data;
+        head = head.next;
+        size--;
+        return val;
+    }
+    public int removeLast(){
+        if(head == null){
+            System.out.println("LL is empty");
+            return Integer.MIN_VALUE;
+        }else if(size == 1){
+            int val = head.data;
+            head = tail = null;
+            size=0;
+            return val;
+        }
+        //prev : i -> size-2
+        Node prev = head;
+        for(int i=0 ; i<size-2; i++){
+            prev= prev.next;
+        }
+        int val = prev.next.data;
+        prev.next = null;
+        tail = prev;
+        size--;
+        return val;
+    }
+
+    public int searchIter(int key){
+        if(head == null){
+            System.out.println("List is empty");
+            return -1;
+        }
+        Node temp =head;
+        int idx = 1;
+        while(temp!= null){
+            if(temp.data == key){
+                return idx;
+            }
+            temp = temp.next;
+            idx++;
+
+        }
+        return -1;
+    }
+
 
 
 
