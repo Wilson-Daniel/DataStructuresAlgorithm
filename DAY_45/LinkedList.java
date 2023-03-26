@@ -84,9 +84,50 @@ public class LinkedList {
         System.out.println(ll.size);
         ll.removeFirst();
         ll.printList();
-        ll.removeLast();
+        //ll.removeLast();
         ll.printList();
         System.out.println(ll.searchIter(34));
+        System.out.println(ll.recSearch(34));
+        //ll.reverse();
+        //ll.deleteNthFromEnd(2);
+        ll.printList();
+        Node hh = l1.findMid(ll.head);
+        System.out.println(hh.data);
+    }
+
+    //finding the mid element
+    // SLOW-FAST APPROACH
+    public Node findMid(Node head){
+        Node slow = head;
+        Node fast = head;
+        while(fast!=null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    //deleting nth node
+    public void deleteNthFromEnd(int n){
+        int sz = 0;
+        Node temp = head;
+        while(temp!=null){
+            temp = temp.next;
+            sz++;
+        }
+        if(n==sz){
+            head = head.next;
+            return;
+        }
+        int i=1;
+        int iToFind = sz-n;
+        Node prev = head;
+        while(i<iToFind){
+            prev = prev.next;
+            i++;
+        }
+        prev.next = prev.next.next;
+        return;
     }
 
     public int removeFirst(){
@@ -132,7 +173,7 @@ public class LinkedList {
             return -1;
         }
         Node temp =head;
-        int idx = 1;
+        int idx = 0;
         while(temp!= null){
             if(temp.data == key){
                 return idx;
@@ -142,6 +183,40 @@ public class LinkedList {
 
         }
         return -1;
+    }
+    public int recSearch(int key){
+        return helper(head,key);
+    }
+    public int helper(Node head, int key){
+        if(head == null){
+            return -1;
+        }
+        if(head.data == key){
+            return 0;
+        }
+        int idx = helper(head.next,key);
+        if(idx == -1){
+            return -1;
+        }
+        return idx+1;
+    }
+
+    //reversing a linkedList
+    public void reverse(){
+        if(head==null){
+            System.out.println("LL is null");
+        }
+        Node prev = null;
+        Node curr = tail = head;
+        Node next;
+
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev; //after reverse we will start from backward so we are updating the head
     }
 
 
