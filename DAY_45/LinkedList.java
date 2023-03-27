@@ -77,6 +77,7 @@ public class LinkedList {
         LinkedList l1 = new LinkedList();
         ll.addFirst(2);
         ll.addLast(34);
+        ll.addLast(4);
         ll.addLast(3);
         ll.addFirst(1);
         ll.add(5,3);
@@ -93,6 +94,12 @@ public class LinkedList {
         ll.printList();
         Node hh = l1.findMid(ll.head);
         System.out.println(hh.data);
+        l1.addFirst(2);
+        l1.addFirst(3);
+        l1.addFirst(3);
+        l1.addFirst(2);
+
+        System.out.println(l1.checkPalindrome());
     }
 
     //finding the mid element
@@ -105,6 +112,34 @@ public class LinkedList {
             fast = fast.next.next;
         }
         return slow;
+    }
+    public boolean checkPalindrome(){
+        if(head == null || head.next == null){
+            return true;
+        }
+        //STEP 1 - Find Mid
+        Node mid = findMid(head);
+        //STEP 2 - Reverse the 2nd half
+        Node prev = null;
+        Node curr = mid;
+        Node next ;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node right = prev;
+        Node left = head;
+        //STEP 3 - check left and right head
+        while(right != null){
+            if(left.data != right.data){
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+        return true;
     }
 
     //deleting nth node
