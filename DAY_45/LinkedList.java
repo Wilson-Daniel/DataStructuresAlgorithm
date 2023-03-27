@@ -98,8 +98,9 @@ public class LinkedList {
         l1.addFirst(3);
         l1.addFirst(3);
         l1.addFirst(2);
-
+        System.out.println(ll.recSearch(3));
         System.out.println(l1.checkPalindrome());
+
     }
 
     //finding the mid element
