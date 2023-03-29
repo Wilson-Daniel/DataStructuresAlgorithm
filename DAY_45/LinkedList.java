@@ -100,8 +100,58 @@ public class LinkedList {
         l1.addFirst(2);
         System.out.println(ll.recSearch(3));
         System.out.println(l1.checkPalindrome());
+        LinkedList l2 = new LinkedList();
+        l2.addLast(1);
+        l2.addLast(2);
+        l2.addLast(3);
+        l2.addLast(4);
+        l2.addLast(5);
+        l2.addLast(6);
+        System.out.print("ZIG-ZAG Linked List ");
+        l2.zigZag();
+        l2.printList();
 
     }
+
+    //------ZIG-ZAG LINKED LIST---------
+    public void zigZag(){
+        //Find mid
+        Node slow = head;
+        Node fast = head.next;
+        while(fast!= null && fast.next!= null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node mid = slow;
+        //reverse 2nd half
+        Node curr = mid.next;
+        mid.next = null;
+        Node prev = null;
+        Node next;
+        while(curr!=null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        //merrge Zig-Zag merge
+        Node left = head;
+        Node right = prev;
+        Node nextL,nextR;
+        while(left!= null && right != null){
+            nextL = left.next;
+            left.next = right;
+            nextR = right.next;
+            right.next = nextL;
+            left = nextL;
+            right = nextR;
+        }
+
+    }
+
+
+
+
 
     //finding the mid element
     // SLOW-FAST APPROACH
