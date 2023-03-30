@@ -26,6 +26,23 @@ public class DoublyLinkedList {
         head.prev = newNode;
         head = newNode;
     }
+    public void addLast(int data){
+        Node newNode = new Node(data);
+        size++;
+        if(head == null){
+            head = newNode;
+            newNode.next = newNode.prev= null;
+        }
+        Node temp = head;
+        while(temp.next!= null){
+            temp = temp.next;
+        }
+        temp.next = newNode;
+        newNode.next = null;
+        newNode.prev = temp;
+        System.out.println(newNode.prev.data);
+
+    }
     public void printlist(){
         Node temp = head;
         while(temp!= null){
@@ -47,6 +64,12 @@ public class DoublyLinkedList {
         System.out.println(dll.size) ;
         dll.reverse();
         dll.printlist();
+        dll.addLast(356);
+        dll.printlist();
+        dll.removeLast();
+        dll.printlist();
+        System.out.println(dll.size) ;
+
     }
 
     public int removeFirst(){
@@ -65,6 +88,28 @@ public class DoublyLinkedList {
         size--;
         return val;
     }
+
+    public int removeLast(){
+        if(head == null){
+            System.out.println("LL is empty");
+            return Integer.MIN_VALUE;
+        }
+        if(size==1){
+            int val = head.data;
+            head = tail = null;
+            return val;
+        }
+        Node temp = head;
+        for(int i=0 ; i<size-2 ; i++){
+            temp = temp.next;
+        }
+        int val = temp.next.data;
+        temp.next = null;
+        tail = temp;
+        return val;
+    }
+
+
     public void reverse(){
         if(head == null){
             System.out.println("LL is empty");
