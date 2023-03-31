@@ -4,10 +4,10 @@ package DataStructuresAlgorithm.DAY_50;
 import DataStructuresAlgorithm.DAY1.Node;
 
 public class LinkedList {
-    public static Node head;
+    static Node head;
     public static Node tail;
     public static int size;
-    class Node{
+    static class Node{
         int data;
         Node next;
         Node(int data){
@@ -67,6 +67,14 @@ public class LinkedList {
 
         System.out.println("Checking for palindrome: "+mm.palindrome());
         head = new Node(3);
+        Node temp  = new Node(2);
+        head.next = temp;
+        head.next.next = new Node(3);
+        head.next.next.next = temp;
+        System.out.println("Checking for cycle: "+mm.isCycyle());
+        System.out.println("Removing cycle: ..... ");
+        mm.removeCycle();
+        System.out.println("Checking for cycle: "+mm.isCycyle());
 
     }
     //-----------------------------------------------------REMOVE-----------------
@@ -137,7 +145,7 @@ public class LinkedList {
         return idx+1;
 
     }
-    //-----------------------------------------------
+    //------------------------------------------------------------
     //------------------------------------------REVERSE-----------
     public void reverse(){
         if(head == null){
@@ -156,7 +164,7 @@ public class LinkedList {
         head = prev;
     }
     //------------------------------------------------------------------
-    //-------------------------------------------DETECTING LOOP----------
+    //-------------------------------------------DETECTING CYCLE----------
     public boolean isCycyle(){
         Node slow = head;
         Node fast = head;
@@ -168,6 +176,34 @@ public class LinkedList {
             }
         }
         return false;
+    }
+    //---------------------------------------------REMOVING CYCLE----------
+    public void removeCycle(){
+        //detect cycle
+        Node slow = head;
+        Node fast = head;
+        boolean cycle = false;
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(fast == slow){
+                cycle = true;
+                break;
+            }
+        }
+        if(cycle == false){
+            return;
+        }
+        //find meeting point
+        slow = head;
+        Node prev = null;
+        while(fast!=slow){
+            prev = fast;
+            slow = slow.next;
+            fast = fast.next;
+        }
+        //removing cycle
+        prev.next = null;
     }
 
     //----------------------------------------------PRINT------------
@@ -202,7 +238,7 @@ public class LinkedList {
         }
         temp.next = temp.next.next;
     }
-    //------------------------Check LL is palindrome------------
+    //-----------------------------------------------Check LL is palindrome------------
     public boolean palindrome(){
         //find Mid
         Node slow = head;
