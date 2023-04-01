@@ -57,8 +57,6 @@ public class LL {
         //medge
         return merge(newLeft,newRight);
     }
-
-
     public Node merge(Node head1, Node head2){
         Node mergedLL = new Node(-1);
         Node temp = mergedLL;
