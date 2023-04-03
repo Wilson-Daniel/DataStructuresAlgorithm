@@ -2,6 +2,7 @@ package DataStructuresAlgorithm.DAY_50;
 
 
 import DataStructuresAlgorithm.DAY1.Node;
+import DataStructuresAlgorithm.DAY_51.Delete_Without_Head;
 
 public class LinkedList {
     static Node head;
@@ -66,15 +67,33 @@ public class LinkedList {
         mm.print();
 
         System.out.println("Checking for palindrome: "+mm.palindrome());
-        head = new Node(3);
-        Node temp  = new Node(2);
-        head.next = temp;
-        head.next.next = new Node(3);
-        head.next.next.next = temp;
-        System.out.println("Checking for cycle: "+mm.isCycyle());
-        System.out.println("Removing cycle: ..... ");
-        mm.removeCycle();
-        System.out.println("Checking for cycle: "+mm.isCycyle());
+        mm.addLast(3);
+        mm.addLast(2);
+        mm.addLast(1);
+        System.out.println(mm.size);
+//        head = new Node(3);
+//        Node temp  = new Node(2);
+//        head.next = temp;
+//        head.next.next = new Node(3);
+//        head.next.next.next = temp;
+//        System.out.println("Checking for cycle: "+mm.isCycyle());
+//        System.out.println("Removing cycle: ..... ");
+//        mm.removeCycle();
+//        System.out.println("Checking for cycle: "+mm.isCycyle());
+        mm.head = mm.MergeSort(mm.head);
+        System.out.print("Merge Sort: ");
+        mm.print();
+
+        System.out.print("ZIG-ZAG Pattern LL: ");
+        mm.ZigZag();
+        mm.print();
+        //----------------------
+        LinkedList mm2 = new LinkedList();
+
+        mm2.print();
+//        mm1.delNode(head);
+//        mm1.print();
+
 
     }
     //-----------------------------------------------------REMOVE-----------------
@@ -237,6 +256,7 @@ public class LinkedList {
             i++;
         }
         temp.next = temp.next.next;
+        size--;
     }
     //-----------------------------------------------Check LL is palindrome------------
     public boolean palindrome(){
@@ -269,6 +289,105 @@ public class LinkedList {
         }
         return true;
     }
+    //----------------------------------------------------------------------
+    //-----------------------------------MERGE SORT----------------------------
+    public Node MergeSort(Node head){
+        if(head==null || head.next==null){
+            return head;
+        }
+        //Find mid
+        Node mid = findMid(head);
+        //left& right merge sort
+        Node rightHead = mid.next;
+        mid.next=null;
+        Node newLeft = MergeSort(head);
+        Node newRight = MergeSort(rightHead);
+        //merge
+        return merge(newLeft,newRight);
+    }
+    public Node merge(Node head1, Node head2){
+        Node mergeLL = new Node(-1);
+        Node temp = mergeLL;
+        while(head1!=null && head2!=null){
+            if(head1.data<=head2.data){
+                temp.next = head1;
+                head1 = head1.next;
+                temp = temp.next;
+            }else{
+                temp.next = head2;
+                head2 = head2.next;
+                temp = temp.next;
+            }
+        }
+        while(head1!=null){
+            temp.next = head1;
+            head1 = head1.next;
+            temp = temp.next;
+        }
+        while(head2!=null){
+            temp.next = head2;
+            head2 = head2.next;
+            temp = temp.next;
+        }
+        return mergeLL.next;
+    }
+    public Node findMid(Node head){
 
+        Node slow = head;
+        Node fast = head.next;
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+    //---------------------------------------------------------------------------
+    //-------------------------------------------ZIG-ZAG PATTERN LIST-----------
+    public void ZigZag(){
+        //find mid
+        Node slow = head;
+        Node fast = head.next;
+        while (fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        //reverse 2nd half
+        Node curr = slow;
+        Node prev = null;
+        Node next;
+        while(curr!= null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        //merge zig-zig
+        Node left = head;
+        Node right = prev;
+        Node nextL,nextR;
+        while(left!=null && right!=null){
+            nextL = left.next;
+            left.next = right;
+            nextR = right.next;
+            right.next = nextL;
+            left = nextL;
+            right = nextR;
+        }
+    }
+    //-----------------------------------------------------------------------------
+    //----------------------------------------
+    public void delNode(Node head){
+        Node curr = head;
+        Node next;
+        while(curr!=null){
+            next = curr.next;
+            if(curr.data>next.data){
+                curr.next = null;
+                curr = next;
+            }
+            curr = curr.next;
+        }
+    }
 
 }
