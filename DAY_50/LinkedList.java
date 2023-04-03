@@ -44,33 +44,33 @@ public class LinkedList {
     //----------------------------------
 
     public static void main(String[] args) {
-        LinkedList mm = new LinkedList();
-        mm.addFirst(1);
-        mm.addFirst(2);
-        mm.addFirst(3);
-        mm.addLast(3);
-        mm.addLast(2);
-        mm.addLast(1);
-        mm.print();
-        System.out.println(mm.size);
-        System.out.println(mm.removeLast());
-        mm.removeFirst();
-        mm.print();
-        System.out.println(mm.searchItt(0));
-        System.out.println(mm.searchRec(3));
-        mm.reverse();
-        System.out.print("Reverse: ");
-        mm.print();
-
-        mm.removeNth(2);
-        System.out.print("Removing Nth position: ");
-        mm.print();
-
-        System.out.println("Checking for palindrome: "+mm.palindrome());
-        mm.addLast(3);
-        mm.addLast(2);
-        mm.addLast(1);
-        System.out.println(mm.size);
+//        LinkedList mm = new LinkedList();
+//        mm.addFirst(1);
+//        mm.addFirst(2);
+//        mm.addFirst(3);
+//        mm.addLast(3);
+//        mm.addLast(2);
+//        mm.addLast(1);
+//        mm.print();
+//        System.out.println(mm.size);
+//        System.out.println(mm.removeLast());
+//        mm.removeFirst();
+//        mm.print();
+//        System.out.println(mm.searchItt(0));
+//        System.out.println(mm.searchRec(3));
+//        mm.reverse();
+//        System.out.print("Reverse: ");
+//        mm.print();
+//
+//        mm.removeNth(2);
+//        System.out.print("Removing Nth position: ");
+//        mm.print();
+//
+//        System.out.println("Checking for palindrome: "+mm.palindrome());
+//        mm.addLast(3);
+//        mm.addLast(2);
+//        mm.addLast(1);
+//        System.out.println(mm.size);
 //        head = new Node(3);
 //        Node temp  = new Node(2);
 //        head.next = temp;
@@ -80,16 +80,22 @@ public class LinkedList {
 //        System.out.println("Removing cycle: ..... ");
 //        mm.removeCycle();
 //        System.out.println("Checking for cycle: "+mm.isCycyle());
-        mm.head = mm.MergeSort(mm.head);
-        System.out.print("Merge Sort: ");
-        mm.print();
-
-        System.out.print("ZIG-ZAG Pattern LL: ");
-        mm.ZigZag();
-        mm.print();
+//        mm.head = mm.MergeSort(mm.head);
+//        System.out.print("Merge Sort: ");
+//        mm.print();
+//
+//        System.out.print("ZIG-ZAG Pattern LL: ");
+//        mm.ZigZag();
+//        mm.print();
         //----------------------
         LinkedList mm2 = new LinkedList();
-
+        mm2.addLast(2);
+        mm2.addLast(0);
+        mm2.addLast(1);
+        mm2.addLast(2);
+        mm2.addLast(1);
+        mm2.addLast(0);
+        mm2.head = mm2.MergeSort(mm2.head);
         mm2.print();
 //        mm1.delNode(head);
 //        mm1.print();
@@ -376,18 +382,45 @@ public class LinkedList {
         }
     }
     //-----------------------------------------------------------------------------
-    //----------------------------------------
-    public void delNode(Node head){
-        Node curr = head;
-        Node next;
-        while(curr!=null){
-            next = curr.next;
-            if(curr.data>next.data){
-                curr.next = null;
-                curr = next;
-            }
-            curr = curr.next;
+    //----------------------------------------sort 0s,1s,2d-----
+    public Node sort(Node head){
+        if(head==null || head.next==null){
+            return head;
         }
+        Node mid = findMid(head);
+        Node rightHead = mid.next;
+        mid.next = null;
+        Node newLeft = sort(head);
+        Node newRight = sort(rightHead);
+        return mergeSort(newLeft,newRight);
     }
+    public Node mergeSort(Node head1, Node head2){
+        Node newMerge = new Node(-1);
+        Node temp = newMerge;
+        while(head1!=null && head2==null){
+            if(head1.data<head2.data){
+                temp.next = head1;
+                head1 = head1.next;
+                temp = temp.next;
+            }else{
+                temp.next = head2;
+                head2 = head2.next;
+                temp = temp.next;
+            }
+        }
+        while(head1!=null){
+            temp.next = head1;
+            head1 = head1.next;
+            temp= temp.next;
+        }
+        while(head2!=null){
+            temp.next = head2;
+            head2 = head2.next;
+            temp = temp.next;
+        }
+        return newMerge.next;
+    }
+
+
 
 }
