@@ -35,7 +35,7 @@ public class ImplementingQueueUsing2Stacks {
             q.add(5);
             while(!q.isEmpty()){
                 System.out.print(q.remove()+" ");
-                
+
             }
         }
 
