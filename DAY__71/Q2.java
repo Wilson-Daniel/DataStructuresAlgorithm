@@ -2,43 +2,41 @@ package DataStructuresAlgorithm.DAY__71;
 
 public class Q2 {
     public static void main(String[] args) {
-        int[] map = new int[5*104];
-        map[0] = -1;
-        int ans = map[0];
-        int[] nums = {2,2,1,1,1,2,2,};
-        System.out.println(retMajor(nums,map,0,nums.length-1,ans));
-        for(int i: map){
-            System.out.print(i+" ");
-        }
-    }
-    public static int retMajor(int[] arr,int[] map,int si,int ei,int ans){
-        if(si<=ei){
-            return 0;
-        }
-        int mid = si + (ei-si)/2;
-        retMajor(arr,map,si,mid,ans);
-        retMajor(arr,map,mid+1,ei,ans);
-        Major(arr,map,si,mid,ei,ans);
-        return ans;
-    }
-    public static void Major(int[] arr,int[] map,int si,int mid,int ei,int ans){
-        int i= si;
-        int j=mid+1;
-        int k=0;
 
-        while(i<=mid){
-            map[i]++;
-            if(map[arr[i]]>map[ans]){
-                ans = map[arr[i]];
+        int[] nums = {17, 19, 9, 5, 3, 6, 17, 7, 18, 16, 18, 11, 3, 15, 2};
+        //int[] nums = {2,2,1,1,1,1,1,2,2,};
+        System.out.println(majorityElementRes(nums,0, nums.length-1));
+    }
+
+    public static int majorityElementRes(int[] nums, int lo,int hi){
+        if(lo == hi){
+            return nums[lo];
+        }
+        int mid = lo+(hi-lo)/2;
+        //recurse for left and right part
+        int left = majorityElementRes(nums,lo,mid);
+        int right = majorityElementRes(nums,mid+1,hi);
+        //if both agrees then return
+        if(left == right){
+            return left;
+        }
+        //else count each element and return the "winner"
+        int leftCount = countInRange(nums,left,lo,hi);
+        int rightCount = countInRange(nums,right,lo,hi);
+        return leftCount>rightCount ? left : right ;
+
+    }
+    public static int countInRange(int[] nums,int num,int lo,int hi){
+        int count = 0;
+        for(int i=lo ; i<=hi;i++){
+            if(nums[i] == num){
+                count++;
             }
         }
-        while(j<=ei){
-            map[arr[j]]++;
-            if(map[arr[j]]>map[ans]){
-                ans = map[arr[j]];
-            }
+        if(count < hi/2){
+            return -1;
         }
-
+        return count;
     }
 
 }
