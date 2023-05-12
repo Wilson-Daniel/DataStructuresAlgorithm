@@ -3,14 +3,14 @@ package DataStructuresAlgorithm.DAY__74;
 public class BACKTRACKING_Sudoku {
     public static boolean isSafe(int[][] sudoku, int row,int col,int digit){
         //ROW
-        for(int j=0 ; j<=8 ; j++){
-            if(sudoku[row][j] == digit){
+        for(int i=0 ; i<=8 ; i++){
+            if(sudoku[i][col] == digit){
                 return false;
             }
         }
         //column
-        for(int i=0 ; i<=8 ; i++){
-            if(sudoku[i][col]==digit){
+        for(int j=0 ; j<=8 ; j++){
+            if(sudoku[row][j]==digit){
                 return false;
             }
         }
