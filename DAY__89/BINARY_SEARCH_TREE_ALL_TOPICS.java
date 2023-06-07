@@ -30,7 +30,7 @@ public class BINARY_SEARCH_TREE_ALL_TOPICS {
     }
     //----------------------------------------------------
     public static void main(String[] args) {
-        int[] values = {8,5,3,6,10,14};
+        int[] values = {8,9,3,1,4,5,6,2};
         Node root = null;
         for(int i=0 ; i<values.length ; i++){
             root = insert(root,values[i]);
@@ -45,6 +45,7 @@ public class BINARY_SEARCH_TREE_ALL_TOPICS {
         ArrayList<Integer> ans = new ArrayList<>();
         System.out.println("PATH ARE: ");
         rootTOLeaf(root,ans);
+        System.out.println("IS A VALID BST: "+isValidBst(root,null,null));
 
     }
     //-----------------------------------------------------------
@@ -141,5 +142,17 @@ public class BINARY_SEARCH_TREE_ALL_TOPICS {
     }
     //-----------------------------------------------------------
     //----------------VALID BST--------------
-    public static boolean valid
+    public static boolean isValidBst(Node root,Node min,Node max){
+        if(root==null){
+            return true;
+        }
+        if(min!=null && root.data<=min.data){
+            return false;
+        }else if(max!=null && root.data>=max.data){
+            return false;
+        }
+        return isValidBst(root.left,min,root)
+                && isValidBst(root.right,root,max);
+    }
+
 }
