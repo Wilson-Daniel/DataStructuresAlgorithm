@@ -9,8 +9,7 @@ public class BINARY_SEARCH_TREE_Mirror_A_BST {
             this.data = data;
         }
     }
-    //-----------------------------------------------------------
-    //----------------MIRROR A BINARY SEARCH TREE--------------
+
     public static Node createMirror(Node root){
         if(root==null){
             return null;
