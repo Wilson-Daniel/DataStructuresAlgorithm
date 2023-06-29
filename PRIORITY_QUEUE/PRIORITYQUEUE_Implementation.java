@@ -3,7 +3,7 @@ package DataStructuresAlgorithm.PRIORITY_QUEUE;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class Implementation {
+public class PRIORITYQUEUE_Implementation {
     public static class Student implements Comparable<Student>{
         String name;
         int rank;
