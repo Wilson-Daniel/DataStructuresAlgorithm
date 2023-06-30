@@ -9,7 +9,7 @@ public class PRIORITYQUEUE_Sliding_Window_Maximum {
         int val;
         int idx;
         Pair(int val,int idx){
-            this.val = val; 
+            this.val = val;
             this.idx = idx;
         }
         @Override
