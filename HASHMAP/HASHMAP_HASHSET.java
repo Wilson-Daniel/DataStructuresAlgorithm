@@ -13,6 +13,7 @@ public class HASHMAP_HASHSET {
         cities.add("Noida");
         cities.add("Bengaluru");
         //System.out.println(cities);
+
         Iterator it = cities.iterator();
         while(it.hasNext()){
             System.out.println(it.next());
