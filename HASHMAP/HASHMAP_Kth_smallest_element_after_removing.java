@@ -9,8 +9,6 @@ public class HASHMAP_Kth_smallest_element_after_removing {
         for(int i=1 ; i<=20 ; i++){
             ts.add(i);
         }
-        for(int i=0){
 
-        }
     }
 }
