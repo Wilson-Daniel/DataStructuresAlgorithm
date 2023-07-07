@@ -1,5 +1,8 @@
 package DataStructuresAlgorithm.TRIE;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 public class TRIE_Prefix_Problem {
     public static class Node{
         Node children[] = new Node[26];
@@ -19,7 +22,6 @@ public class TRIE_Prefix_Problem {
             int idx = word.charAt(level)-'a';
             if(curr.children[idx] == null){
                 curr.children[idx] = new Node();
-                curr.frequency = 1;
             }
             curr = curr.children[idx];
             curr.frequency++;
@@ -50,5 +52,6 @@ public class TRIE_Prefix_Problem {
         for(int i=0 ; i<arr.length ; i++){
             System.out.println(search(arr[i]));
         }
+
     }
 }

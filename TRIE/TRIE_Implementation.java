@@ -53,5 +53,16 @@ public class TRIE_Implementation {
         }
         System.out.println("Word Exist: "+search("any"));
         System.out.println("Word Exist: "+search("an"));
+        System.out.println(check(root,""));
     }
+    public static String check(Node curr,String ans){
+        for(int i=0 ; i<26 ; i++){
+            if(curr.children[i]!=null){
+                ans+='a'-i;
+                check(curr.children[i],ans);
+            }
+        }
+        return ans;
+    }
+
 }
