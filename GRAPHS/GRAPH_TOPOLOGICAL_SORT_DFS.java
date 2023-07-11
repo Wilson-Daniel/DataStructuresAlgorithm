@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class GRAPH_TOPOLOGICAL_SORT {
+public class GRAPH_TOPOLOGICAL_SORT_DFS {
     static class Edge{
         int src;
         int dest;
