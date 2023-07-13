@@ -3,6 +3,7 @@ package DataStructuresAlgorithm.GRAPHS;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class GRAPH_REVISION {
     static public class Edge{
@@ -75,7 +76,6 @@ public class GRAPH_REVISION {
             }
         }
     }
-
     public static void dfsUtil(ArrayList<Edge>[] graph,int curr,boolean[] vis){
         System.out.print(curr+" ");
         vis[curr] = true;
@@ -87,7 +87,60 @@ public class GRAPH_REVISION {
             }
         }
     }
-
+    //----------------------------------------------------------
+    //-------------CYCLE DETECTION UNDIRECTED GRAPH---------------
+    public static boolean detectCycle(ArrayList<Edge>[] graph){
+        boolean[] vis = new boolean[graph.length];
+        for(int i=0 ; i<vis.length ; i++){
+            if(!vis[i]){
+                if(detectCycleUtil(graph,vis,i,-1)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public static boolean detectCycleUtil(ArrayList<Edge>[] graph, boolean[] vis,int curr,int parent){
+        vis[curr] = true;
+        for(int i=0 ; i<graph[curr].size() ; i++){
+            Edge e = graph[curr].get(i);
+            if(!vis[e.dest]){
+                if(detectCycleUtil(graph,vis,e.dest,curr)){
+                    return true;
+                }
+            }else if(vis[e.dest] && e.dest!=parent){
+                return true;
+            }
+        }
+        return false;
+    }
+    //----------------------------------------------------------
+    //-------------CYCLE DETECTION DIRECTED GRAPH---------------
+    public static boolean isCycle(ArrayList<Edge>[] graph){
+        boolean[] vis = new boolean[graph.length];
+        boolean[] stack = new boolean[graph.length];
+        for(int i=0 ; i<vis.length ; i++){
+            if(!vis[i]){
+                if(isCycleUtil(graph,i,vis,stack)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public static boolean isCycleUtil(ArrayList<Edge>[] graph,int curr,boolean[] vis,boolean[] stack){
+        vis[curr] = true;
+        for(int i=0 ; i<graph[curr].size();i++){
+            Edge e = graph[curr].get(i);
+            if(stack[e.dest]){ // neigh already in stack
+                return true;
+            }else if(!vis[curr] && isCycleUtil(graph,e.dest,vis,stack)){
+                return true;
+            }
+        }
+        stack[curr] = false;
+        return false;
+    }
 
     public static void main(String[] args) {
         int V=7;
@@ -98,6 +151,10 @@ public class GRAPH_REVISION {
         System.out.println();
         System.out.print("DFS (CONNECTED COMPONENTS): ");
         dfs(graph);
+        System.out.println();
+        System.out.print("CYCLE DETECTION (UNDIRECTED GRAPH): "+detectCycle(graph));
+        System.out.println();
+        System.out.print("CYCLE DETECTION (DIRECTED GRAPH): "+isCycle(graph));
 
     }
 }
