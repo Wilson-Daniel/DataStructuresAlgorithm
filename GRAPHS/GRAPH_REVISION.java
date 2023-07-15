@@ -41,8 +41,26 @@ public class GRAPH_REVISION {
         graph[5].add(new Edge(6,5));
     }
     //----------------------------------------------------------
-    //-------------BFS CONNECTED COMPONENTS---------------------
+    //--------------------------BFS-----------------------------
     public static void bfs(ArrayList<Edge>[] graph){
+        Queue<Integer> q = new LinkedList<>();
+        boolean[] vis = new boolean[graph.length];
+        q.add(0);
+        while(!q.isEmpty()){
+            int curr = q.remove();
+            if(!vis[curr]){
+                System.out.print(curr+" ");
+                vis[curr] = true;
+                for(int i=0; i<graph[curr].size() ; i++){
+                    Edge e = graph[curr].get(i);
+                    q.add(e.dest);
+                }
+            }
+        }
+    }
+    //----------------------------------------------------------
+    //-------------BFS CONNECTED COMPONENTS---------------------
+    public static void bfs1(ArrayList<Edge>[] graph){
         boolean[] vis = new boolean[graph.length];
         for(int i=0 ; i<vis.length ; i++){
             if(!vis[i]){
