@@ -1,5 +1,10 @@
 package DataStructuresAlgorithm.ARRAYS;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 public class ARRAYS_Rotated_Sorted_Array {
     public static void hasSum(int[] arr,int sum){
         int n=arr.length;
@@ -24,40 +29,33 @@ public class ARRAYS_Rotated_Sorted_Array {
 
     }
     public static void main(String[] args) {
-        int arr[] = {11, 15, 6, 8, 9, 10};
-        System.out.println(pairInSortedRotated(arr,6,21));
+        int[] arr= {11, 15, 6, 8, 9, 10};
+        //System.out.println(pairInSortedRotated(arr,6,21));
+        //ArrayList<Integer> ans = pairInSortedRotated(arr,arr.length,16);
+        pairInSortedRotated(arr,arr.length,16);
     }
-    static boolean pairInSortedRotated(int arr[], int n,
-                                       int x)
-    {
-        // Find the pivot element
+    static void pairInSortedRotated(int[] arr, int n, int x) {
+        ArrayList<Integer> finAns = new ArrayList<>();
         int i;
-        for (i = 0; i < n - 1; i++)
-            if (arr[i] > arr[i + 1])
+        for(i=0 ; i<arr.length-1 ; i++){
+            if(arr[i] > arr[i+1]){
                 break;
-
-        // l is now index of smallest element
-        int l = (i + 1) % n;
-
-        // r is now index of largest element
-        int r = i;
-
-        // Keep moving either l or r till they meet
-        while (l != r) {
-            // If we find a pair with sum x, we
-            // return true
-            if (arr[l] + arr[r] == x)
-                return true;
-
-            // If current pair sum is less, move
-            // to the higher sum
-            if (arr[l] + arr[r] < x)
-                l = (l + 1) % n;
-
-                // Move to the lower sum side
-            else
-                r = (n + r - 1) % n;
+            }
         }
-        return false;
+        int left = (i+1)%n;
+        int right = i;
+        while(left != right ){
+            if(arr[left] + arr[right]==x){
+                System.out.println(arr[left]+" "+arr[right]);
+            }
+            if(arr[left]+arr[right] < x){
+                left = (left+1)%n;
+
+            }else{
+                right  = (n+right-1)%n;
+            }
+        }
+
+        //return finAns;
     }
 }
