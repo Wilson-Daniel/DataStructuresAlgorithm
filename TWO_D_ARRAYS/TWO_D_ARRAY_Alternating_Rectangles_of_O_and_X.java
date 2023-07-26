@@ -30,7 +30,7 @@ public class TWO_D_ARRAY_Alternating_Rectangles_of_O_and_X {
                 totalCount++;
             }
             leftCol++;
-            rightCol--;
+            rightCol--; 
         }
     }
     public static void main(String[] args) {
