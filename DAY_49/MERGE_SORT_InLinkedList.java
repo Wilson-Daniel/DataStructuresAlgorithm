@@ -15,7 +15,7 @@ public class MERGE_SORT_InLinkedList {
             this.next = null;
         }
     }
-    private Node findNode(Node head){
+    private static Node findNode(Node head){
         Node slow = head;
         Node fast = head.next;
         while(head!=null && head.next!=null){
@@ -24,7 +24,7 @@ public class MERGE_SORT_InLinkedList {
         }
         return slow;
     }
-    public Node mergeSort(Node head){
+    public static Node mergeSort(Node head){
         //find Mid
         Node mid = findNode(head);
         //left and right Node
@@ -44,8 +44,9 @@ public class MERGE_SORT_InLinkedList {
         ll.addFirst(2);
         ll.addFirst(1);
         System.out.println(ll);
+        mergeSort(head);
     }
-    public Node merge(Node head1,Node head2){
+    public static Node merge(Node head1,Node head2){
         Node mergedLL = new Node(-1);
         Node temp = mergedLL;
         while(head1!=null && head2!=null){
