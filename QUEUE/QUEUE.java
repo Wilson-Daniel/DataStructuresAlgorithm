@@ -1,5 +1,8 @@
 package DataStructuresAlgorithm.QUEUE;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class QUEUE {
     static int arr[];
     static int size;
@@ -47,5 +50,8 @@ public class QUEUE {
         System.out .println(q.remove());
         System.out .println(q.remove());
         System.out .println(q.remove());
+        Queue<Integer> qq =  new LinkedList<>();
+        qq.poll();
+        System.out.println(qq.poll());
     }
 }
