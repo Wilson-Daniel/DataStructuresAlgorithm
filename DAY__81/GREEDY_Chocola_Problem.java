@@ -6,7 +6,7 @@ import java.util.Collections;
 public class GREEDY_Chocola_Problem {
     //Minimum cost to cut a chocolate into square pieces
     public static void main(String[] args) {
-        int n=4,m =6;
+        //int n=4,m =6;
         Integer costVer[] = {2,1,3,1,4};
         Integer costHor[] = {4,1,2};
 
@@ -14,7 +14,7 @@ public class GREEDY_Chocola_Problem {
         Arrays.sort(costHor, Collections.reverseOrder());
 
         int h=0,v=0;
-        int hp=1, vp=1;
+        int hp=1, vp=1; //horizontal pieces ,  Vertical pieces
         int cost=0;
         while(h<costHor.length && v<costVer.length){
             if(costVer[v] <= costHor[h]){
@@ -39,4 +39,5 @@ public class GREEDY_Chocola_Problem {
         }
         System.out.println(cost);
     }
+
 }

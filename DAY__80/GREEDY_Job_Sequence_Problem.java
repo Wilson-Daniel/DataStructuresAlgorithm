@@ -29,14 +29,20 @@ public class GREEDY_Job_Sequence_Problem {
 
         ArrayList<Integer> seq = new ArrayList<>();
         int time =0;
+        int count = 0;
+        int profit = 0;
         for(int i=0 ; i<jobs.size() ; i++){
             Job currJob = jobs.get(i);
-            if(currJob.deadline>time){
+            if(currJob.deadline > time){
                 seq.add(currJob.id);
+                count++;
+                profit+= currJob.profit;
                 time++;
             }
         }
         System.out.println(seq);
+        System.out.println(count);
+        System.out.println(profit);
 
     }
 }
