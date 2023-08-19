@@ -20,6 +20,7 @@ public class BINARY_TREE_SUM_OF_NODES {
         root.right.right = new Node(6);
         BINARY_TREE_SUM_OF_NODES ss = new BINARY_TREE_SUM_OF_NODES();
         System.out.println(ss.sumNode(root));
+        level(root,1,3);
     }
     public int sumNode(Node root){
         if(root==null){
@@ -30,7 +31,6 @@ public class BINARY_TREE_SUM_OF_NODES {
         return left+right+root.data;
     }
 
-
     public static class Info{
         int diam;
         int ht;
@@ -39,10 +39,17 @@ public class BINARY_TREE_SUM_OF_NODES {
             this.ht = ht;
         }
     }
-//    public static Info Diameter(Node root){
-//
-//        Info leftInfo = Diameter(root.right);
-//
-//    }
+    public static void level(Node root,int level ,int k){
+        if(root==null){
+            return;
+        }
+        if(level==k){
+            System.out.print(root.data+" ");
+            return;
+        }
+        level(root.left,level+1,k);
+        level(root.right,level+1,k);
+    }
+
 
 }
