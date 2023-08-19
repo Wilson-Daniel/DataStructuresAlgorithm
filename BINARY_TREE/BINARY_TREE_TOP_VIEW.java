@@ -45,11 +45,11 @@ public class BINARY_TREE_TOP_VIEW {
                 }
                 if(curr.node.left != null){
                     q.add(new Info(curr.node.left, curr.hd-1));
-                    min = Math.min(min, curr.hd-1);
+                    //min = Math.min(min, curr.hd-1);
                 }
                 if(curr.node.right != null){
                     q.add(new Info(curr.node.right , curr.hd+1));
-                    max = Math.min(max,curr.hd+1);
+                    max = Math.max(max,curr.hd+1);
                 }
             }
         }
