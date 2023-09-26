@@ -1,5 +1,6 @@
 package DataStructuresAlgorithm.BINARY_SEARCH_TREE;
 
+import DataStructuresAlgorithm.DAY4.LargestOf3Digits;
 import DataStructuresAlgorithm.DAY__91.BINARY_SEARCH_TREE_ALL_Revision;
 
 import java.sql.SQLOutput;
@@ -58,9 +59,12 @@ public class BINARY_SEARCH_TREE {
         int[] sortedArr = {3,5,6,8,10,11,12};
         Node Sroot = sortedArrayToBST(sortedArr,0,sortedArr.length-1);
         preOrder(Sroot);
-        balanceBST(root);
+        //balanceBST(root);
         System.out.println();
         preOrder(root);
+        System.out.println();
+        Info ss = largestBST(root);
+        System.out.println(ss.size);
     }
     public static boolean search(Node root,int key){
         if(root==null){
@@ -196,6 +200,35 @@ public class BINARY_SEARCH_TREE {
         getInOrder(root.left,inorder);
         inorder.add(root.data);
         getInOrder(root.right,inorder);
+    }
+    public static class Info{
+        boolean isBST;
+        int size;
+        int min;
+        int max;
+        Info(boolean isBST,int size,int min,int max){
+            this.isBST = isBST;
+            this.size = size;
+            this.min = min;
+            this.max = max;
+        }
+    }
+    public static Info largestBST(Node root){
+        if(root==null){
+            return new Info(true,0,Integer.MAX_VALUE,Integer.MIN_VALUE);
+        }
+        Info leftInfo = largestBST(root.left);
+        Info rightInfo = largestBST(root.right);
+        int size = leftInfo.size+rightInfo.size+1;
+        int min = Math.max(root.data,Math.max(leftInfo.min,rightInfo.min));
+        int max = Math.max(root.data,Math.max(leftInfo.max, rightInfo.max));
+        if(root.data <= leftInfo.max || root.data>= rightInfo.min){
+            return new Info(false,size,min,max);
+        }
+        if(leftInfo.isBST && rightInfo.isBST){
+            return new Info(true,size,min,max);
+        }
+        return new Info(false,size,min,max);
     }
 
 }
