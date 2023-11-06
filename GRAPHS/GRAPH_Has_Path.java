@@ -1,5 +1,7 @@
 package DataStructuresAlgorithm.GRAPHS;
 
+import com.sun.security.jgss.GSSUtil;
+
 import java.util.ArrayList;
 
 public class GRAPH_Has_Path {
@@ -43,7 +45,7 @@ public class GRAPH_Has_Path {
 
         graph[0].add(new Edge(6,5,1));
     }
-    //own logic
+    //own logic, this will make 1 extra move when 0 is src and 0 is dest likek it will go to 1 and then well get true
     public static boolean hasPath(ArrayList<GRAPH_BFS.Edge>[] graph, int curr, int dest, boolean[] vis){
         vis[curr] = true;
         for(int i=0 ; i<graph[curr].size() ; i++){
@@ -59,15 +61,13 @@ public class GRAPH_Has_Path {
         return false;
     }
     public static boolean hasPath2(ArrayList<Edge>[] graph, int src, int dest, boolean[] vis) {
-        if(src == dest){
+        if(src==dest){
             return true;
         }
         vis[src] = true;
         for(int i=0 ; i<graph[src].size() ; i++){
             Edge e = graph[src].get(i);
-            // e.dest = neighbour
             if(!vis[e.dest] && hasPath2(graph,e.dest,dest,vis)){
-                vis[src] = true;
                 return true;
             }
         }
@@ -79,5 +79,28 @@ public class GRAPH_Has_Path {
         ArrayList<Edge>[] graph = new ArrayList[V];
         createNode(graph);
         System.out.println(hasPath2(graph,0,5,new boolean[V]));
+        int[][] edge = {{0,1},{0,2},{3,5},{5,4},{4,3}};
+//        ArrayList<ArrayList<Edge2>> graph1 = new ArrayList<>();
+//        createGraph(graph1,edge);
+//        for (int i=0 ; i< graph1.size() ; i++){
+//            for(int j=0 ; j<graph1.get(i).size() ; j++){
+//                System.out.print(i+" "+graph1.get(i).get(j).dest+" ");
+//            }
+//            System.out.println();
+//        }
+    }
+    static class Edge2{
+        int src;
+        int dest;
+        Edge2(int s,int d){
+            this.src = s;
+            this.dest = d;
+        }
+    }
+    public static void createGraph(ArrayList<ArrayList<Edge2>> graph,int[][] edge){
+        for(int i=0 ; i<edge.length ; i++){
+            graph.get(edge[i][0]).add(new Edge2(edge[i][0], edge[i][1]));
+        }
+
     }
 }

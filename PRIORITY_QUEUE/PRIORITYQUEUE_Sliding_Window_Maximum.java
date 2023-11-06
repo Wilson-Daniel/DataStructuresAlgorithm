@@ -16,7 +16,7 @@ public class PRIORITYQUEUE_Sliding_Window_Maximum {
         public int compareTo(Pair P2){
             //ascending
             //return this.value-p2.value
-            //descending
+            //descendingtaskttas
             return P2.val - this.val ;
         }
     }

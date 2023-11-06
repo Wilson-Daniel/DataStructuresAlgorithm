@@ -22,13 +22,13 @@ public class PRIORITYQUEUE_Nearby_Cars {
     public static void main(String[] args) {
         int[][] pts = {{3,3},{5,-1},{-2,4}};
         int k=2;
-        PriorityQueue<Point> pq = new PriorityQueue<>();
+        PriorityQueue<Point2> pq = new PriorityQueue<>();
         for(int i=0 ; i<pts.length ; i++){
-            int distSq = pts[i][0]*pts[i][0] + pts[i][1]*pts[i][1];
-            pq.add(new Point(pts[i][0],pts[i][1],distSq,i));
+            int dist = pts[i][0]*pts[i][0] + pts[i][1]*pts[i][1];
+            pq.add(new Point2(pts[i][0],pts[i][1],dist,i));
         }
-        for(int i=0 ; i<k ; i++){
-            System.out.println("C"+pq.remove().idx);
+        for(int i=0 ; i<k ;i++){
+            System.out.print(pq.remove().idx+" ");
         }
 
         // Leetcode question
@@ -49,5 +49,21 @@ public class PRIORITYQUEUE_Nearby_Cars {
 //            }
 //            System.out.println();
 //        }
+    }
+    public static class Point2 implements Comparable<Point2>{
+        int x;
+        int y;
+        int dist;
+        int idx;
+        Point2(int x,int y,int dist, int idx){
+            this.x = x;
+            this.y=y;
+            this.dist = dist;
+            this.idx = idx;
+        }
+        @Override
+        public int compareTo(Point2 s2){
+            return this.dist - s2.dist;
+        }
     }
 }

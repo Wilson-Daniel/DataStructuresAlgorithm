@@ -25,7 +25,7 @@ public class GRAPH_CYCLE_DETECTION {
         graph[1].add(new Edge(1,0));
         graph[1].add(new Edge(1,2));
 
-        //graph[2].add(new Edge(2,0));
+        graph[2].add(new Edge(2,0));
         graph[2].add(new Edge(2,1));
 
         graph[3].add(new Edge(3,0));
